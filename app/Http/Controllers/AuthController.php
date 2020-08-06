@@ -11,21 +11,37 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index()
+    public function form()
     {
-
-        return view('auth.index');
+        return view('form');
     }
 
+
+    //Parameten Request . Objeknya $request untuk dapetin datanya
+    public function selamatdatang(Request $request)
+    {
+        //dd($request->all());
+
+        $firstname = $request["firstname"];
+        $lastname = $request["lastname"];
+        $nama_lengkap = "$firstname $lastname";
+    
+        //compact menerima variabel dikirim berupa string
+        return view('selamatdatang', compact('nama_lengkap'));
+    }
+
+//form    
+    //public function auth(){
+    //    return view('auth');
+    //}
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
+        //
     }
 
     /**
@@ -36,19 +52,16 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        $nama_depan = $request['fname'];
-        $nama_belakang = $request['lname'];
-        $nama_lengkap = "$nama_depan $nama_belakang";
-        return view('auth.welcome', compact('nama_lengkap'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Auth  $auth
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Auth $auth)
     {
         //
     }
@@ -56,10 +69,10 @@ class AuthController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Auth  $auth
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Auth $auth)
     {
         //
     }
@@ -68,10 +81,10 @@ class AuthController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Auth  $auth
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Auth $auth)
     {
         //
     }
@@ -79,10 +92,10 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Auth  $auth
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Auth $auth)
     {
         //
     }

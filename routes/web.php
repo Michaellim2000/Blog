@@ -1,5 +1,5 @@
 <?php
-
+//use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,12 +11,28 @@
 |
 */
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
-
-//route::get('/', function () {
-//   return view('welcome');
-//});
+/*
+Route::get('/', function () {
+    return view('welcome');
+});
+*/
 
 route::get('/', 'HomeController@index');
-route::get('/register', 'AuthController@index');
-route::post('/welcome', 'AuthController@store');
+//form
+route::get('/register', 'AuthController@form');
+route::post('/selamatdatang', 'AuthController@selamatdatang');
+
+route::get('/master', function(){
+    return view ('adminlte.master');
+});
+route::get('/items', function(){
+    return view('items.index');
+});
+route::get('/', function(){
+    return view('items.page');
+});
+route::get('/data-table', function(){
+    return view('items.data-table');
+});
